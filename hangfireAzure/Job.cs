@@ -6,14 +6,14 @@ namespace hangfireAzure
 {
     public class Job : IJob
     {
-        public void DoJob()
+        public void DoJob(string executedFrom)
         {
 
             Random r = new Random();
 
             var options = new NameValueCollection {
                     { "t", "PushSafer Testing with Hangfire + Azure" },
-                    { "m", "Testing Message "  + DateTime.Now.ToString() },
+                    { "m", "Testing Message "  + DateTime.Now.ToString() + " executed from " + executedFrom },
                     { "s", "" },
                     { "v", "" },
                     { "i", "" },
@@ -33,6 +33,6 @@ namespace hangfireAzure
 
     public interface IJob
     {
-        void DoJob();
+        void DoJob(string executedFrom);
     }
 }

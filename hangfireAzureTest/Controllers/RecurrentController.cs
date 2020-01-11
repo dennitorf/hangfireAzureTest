@@ -11,11 +11,11 @@ namespace hangfireAzure.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class JobController : ControllerBase
+    public class RecurrentController : ControllerBase
     {
         private IJob jobService;
 
-        public JobController(IJob jobService)
+        public RecurrentController(IJob jobService)
         {
             this.jobService = jobService;
         }
@@ -23,8 +23,11 @@ namespace hangfireAzure.Api.Controllers
         [HttpPost]
         public IActionResult Post()
         {
-            string jobId = BackgroundJob.Enqueue<IJob>(x => x.DoJob("Enqueue One Job"));               
-            return Ok(jobId);
+            string jobId = "JOB_SEND_PUSH_SAFER";
+
+            RecurringJob.AddOrUpdate<IJob>(jobId, x => x.DoJob("Recurrrent Job"), Cron.Minutely);
+
+            return Ok();
         }
 
         [HttpGet("{jobId}")]
@@ -36,7 +39,7 @@ namespace hangfireAzure.Api.Controllers
             var obj = new
             {
                 State = jobData.State,
-                CreatedAt = jobData.CreatedAt                
+                CreatedAt = jobData.CreatedAt
             };
 
             return Ok(obj);

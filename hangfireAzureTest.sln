@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hangfireAzure.Api", "hangfireAzureTest\hangfireAzure.Api.csproj", "{ABD914B3-B31B-4900-9BCA-0F6B2E2CFF76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABD914B3-B31B-4900-9BCA-0F6B2E2CFF76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABD914B3-B31B-4900-9BCA-0F6B2E2CFF76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABD914B3-B31B-4900-9BCA-0F6B2E2CFF76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABD914B3-B31B-4900-9BCA-0F6B2E2CFF76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {258CCCD3-04C0-49E1-BF6D-4986FEC21A0E}
+	EndGlobalSection
+EndGlobal

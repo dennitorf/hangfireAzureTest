@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace hangfireAzure
 {
     public class Job : IJob
     {
-        public void DoJob(string executedFrom)
+        public async void DoJob(string executedFrom)
         {
+            
 
-            Random r = new Random();
+            await Task.Run(() => {
+                Random r = new Random();
 
-            var options = new NameValueCollection {
+                Console.WriteLine("Enviar mensaje de Pushsafer");
+
+                var options = new NameValueCollection {
                     { "t", "PushSafer Testing with Hangfire + Azure" },
                     { "m", "Testing Message "  + DateTime.Now.ToString() + " executed from " + executedFrom },
                     { "s", "" },
@@ -22,16 +28,19 @@ namespace hangfireAzure
                     { "u", "" },
                     { "ut", "" },
                     { "p", "" },
-                    { "k", "k4FvK1KRmQm161Cv9bKb" }
+                    { "k", "CmHhxcbjTINMpyicdlbg" }
             };
-            using (var client = new WebClient())
-            {
-                client.UploadValues("https://www.pushsafer.com/api", options);
-            }
+                using (var client = new WebClient())
+                {
+                    client.UploadValues("https://www.pushsafer.com/api", options);                    
+                }
+            });
+            
         }
+        
     }
 
-    public interface IJob
+    public interface IJob 
     {
         void DoJob(string executedFrom);
     }

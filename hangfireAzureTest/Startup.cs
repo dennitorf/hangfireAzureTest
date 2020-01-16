@@ -29,6 +29,8 @@ namespace hangfireAzure.Api
 
             services.AddQueueServices();
 
+            services.AddSignalOrchestator("http://www.google.com");
+
             services.AddScoped<IJob, Job>();            
 
             //services.AddHangfire(configuration => configuration

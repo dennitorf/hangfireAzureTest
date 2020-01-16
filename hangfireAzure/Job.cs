@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hangfireAzure.EndpointOrchestator;
+using System;
 using System.Collections.Specialized;
 using System.Net;
 using System.Threading;
@@ -8,6 +9,13 @@ namespace hangfireAzure
 {
     public class Job : IJob
     {
+        private ISignalOrchestatorService signalOrchestator;
+
+        public Job(ISignalOrchestatorService signalOrchestator)
+        {
+            this.signalOrchestator = signalOrchestator;
+        }
+
         public async void DoJob(string executedFrom)
         {
             
@@ -34,6 +42,8 @@ namespace hangfireAzure
                 {
                     client.UploadValues("https://www.pushsafer.com/api", options);                    
                 }
+
+                signalOrchestator.Success();
             });
             
         }

@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Hangfire;
-using Hangfire.Storage;
-using hangfireAzure.Api.BackgroundTasks;
+using hangfireAzure.BackgroundTasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
@@ -27,25 +25,26 @@ namespace hangfireAzure.Api.Controllers
         [HttpPost]
         public IActionResult Post()
         {
-            backgroundQueue.Push(async token => {
+            backgroundQueue.Push(async token =>
+            {
                 await Task.Run(() => jobService.DoJob("From Queue"));
             });
             return StatusCode(202);
         }
 
-        [HttpGet("{jobId}")]
-        public IActionResult Get(string jobId)
-        {
-            //IStorageConnection connection = JobStorage.Current.GetConnection();
-            //JobData jobData = connection.GetJobData(jobId);
+        //[HttpGet("{jobId}")]
+        //public IActionResult Get(string jobId)
+        //{
+        //    IStorageConnection connection = JobStorage.Current.GetConnection();
+        //    JobData jobData = connection.GetJobData(jobId);
 
-            //var obj = new
-            //{
-            //    State = jobData.State,
-            //    CreatedAt = jobData.CreatedAt                
-            //};
+        //    var obj = new
+        //    {
+        //        State = jobData.State,
+        //        CreatedAt = jobData.CreatedAt
+        //    };
 
-            return Ok(1);
-        }
+        //    return Ok(1);
+        //}
     }
 }

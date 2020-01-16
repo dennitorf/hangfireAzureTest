@@ -1,4 +1,4 @@
-﻿using hangfireAzure.Api.BackgroundTasks;
+﻿using hangfireAzure.BackgroundTasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace hangfireAzure.Api.BackgroundTasks
+namespace hangfireAzure.BackgroundTasks
 {
     public interface IBackgroundQueue
     {

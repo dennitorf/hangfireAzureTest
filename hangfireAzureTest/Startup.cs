@@ -30,8 +30,7 @@ namespace hangfireAzure.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddHostedService<QueueService>();
-            services.AddSingleton<IBackgroundQueue, BackgroundQueue>();
+            services.AddQueueServices();
 
             services.AddScoped<IJob, Job>();            
 
